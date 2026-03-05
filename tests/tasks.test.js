@@ -22,6 +22,11 @@ beforeAll(async () => {
       password: "123456"
     });
 
+  if (!res.body.token) {
+    console.error("Login failed:", res.body);
+    throw new Error("Failed to get token during test setup");
+  }
+
   token = res.body.token;
 });
 
